@@ -1,0 +1,34 @@
+.onepx {
+    margin-top: 50px;
+}
+
+.newarrival {
+    margin-bottom: 5px;
+    background-color: green;
+    width: 50px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.price {
+    color: #FE890F;
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 0px;
+}
+
+.bak {
+    background-color: black;
+    color: black;
+}
+
+.cart {
+    background-color: #FE890F;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.bl {
+    border-right: 2px solid #808080;
+}

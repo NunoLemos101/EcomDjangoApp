@@ -1,0 +1,9 @@
+.removedit {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.removedit:hover {
+    text-decoration: none;
+    color: rgb(185, 193, 201);
+}

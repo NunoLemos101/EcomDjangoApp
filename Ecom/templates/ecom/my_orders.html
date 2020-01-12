@@ -1,0 +1,33 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/xs.css'%}">
+<link rel="stylesheet" href="{% static '/css/ml.css'%}">
+<link rel="stylesheet" href="{% static '/css/mt.css'%}">
+<link rel="stylesheet" href="{% static '/css/mt2.css'%}">
+<link rel="stylesheet" href="{% static '/css/mt3.css'%}">
+<link rel="stylesheet" href="{% static '/css/ml2.css'%}">
+<link rel="stylesheet" href="{% static '/css/paddings.css'%}">
+
+
+
+
+    <div style="background-color:rgb(82, 133, 58)" class="container-fluid">
+        <nav class="container navbar navbar-expand-lg">
+        </nav>
+    </div>
+    <div class="container pt-5 mt30-">
+            <h1>Orders from your Products</h1>
+            <hr>      
+                <span class="mb-3">Orders</span><span class="pad180">Date</span><span class="pad250">Order Status</span><div class="mt23-" align="center" ><span>{{ order.order_status }}</span></div><div class="mt23- mr-3" align="right"><span>PRICE</span></div>
+            <hr>
+    
+    {% for order in orders %}
+                <a href="{% url 'order-detail' order.id %}"> {{ order.order_number }}</a><span class="ml100 text-muted">{{ order.date_placed|date:'l , j M' }}</span>{% if order.order_status == 'Not shipped' %}<div class="mt23- mb-1 text-muted" align="center"><a class="mt33-" style="color:black" href="{% url 'order-detail' order.id %}">{{ order.order_status }}</a>{% else %}<div class="mt23- mb-1 text-muted" align="center"><a class="mt33- text-success" href="{% url 'order-detail' order.id %}">{{ order.order_status }}</a>{% endif %}
+    
+                </div><div class="mt30-" align="right"><span>{{ order.price_paid }}€</span></div>
+    <hr>
+    {% endfor %}
+{% endblock content %}
+</div>

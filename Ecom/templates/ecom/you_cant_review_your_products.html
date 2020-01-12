@@ -1,0 +1,98 @@
+	<form method="POST" action="{% url 'review-confirmation' selected_product.id %}">
+  {% csrf_token %}
+    <div class="form-group">
+      
+
+
+    
+    <div id="div_id_rating" class="form-group">
+        
+            <label for="id_rating" class=" requiredField">
+                Rating<span class="asteriskField">*</span>
+            </label>
+        
+
+        
+
+        
+
+        
+            
+                <div class="">
+                    <select name="rating" style="color:#FFD700" class="select form-control" required id="id_rating">
+  <option value="" selected>★ ★ ★ ★ ★</option>
+
+  <option style="color:black" value="0">☆</option>
+
+  <option style="color:#FFD700" value="1">★</option>
+
+  <option style="color:#FFD700" value="2">★★</option>
+
+  <option style="color:#FFD700" value="3">★★★</option>
+
+  <option style="color:#FFD700" value="4">★★★★</option>
+
+  <option style="color:#FFD700" value="5">★★★★★</option>
+
+</select>
+                    
+
+
+    
+
+
+
+
+    
+
+
+
+                </div>
+            
+        
+    </div>
+    
+
+
+      
+
+
+    
+    <div id="div_id_content" class="form-group">
+        
+            <label for="id_content" class=" requiredField">
+                Content<span class="asteriskField">* (max. length: 800)</span>
+            </label>
+        
+
+        
+
+        
+
+        
+            
+                <div class="">
+                    <textarea name="content" cols="40" rows="10" maxlength="800" class="textarea form-control" required id="id_content">
+What do you think about this product?</textarea>
+                    
+
+
+    
+
+
+
+
+    
+
+
+
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
+                </div>
+            
+        
+    </div>
+    
+
+
+    </div>
+</form>

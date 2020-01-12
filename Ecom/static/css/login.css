@@ -1,0 +1,47 @@
+.ms {
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  border: 1px solid #dee2e6;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 250px;
+  background-color: rgb(255, 255, 255);
+}
+
+body {
+    display: block;
+    position: relative;
+
+  }
+  
+  body::after {
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('https://s1.1zoom.me/b5050/971/Lake_Stones_Mountains_Birds_Parks_USA_Evening_566342_1920x1080.jpg');
+    content: "";
+    opacity: 1;
+    position: absolute;
+    top: -253;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;   
+  }
+  
+.mx {
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    border: 1px solid #dee2e6;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 250px;
+    background-color: rgb(255, 255, 255);
+}

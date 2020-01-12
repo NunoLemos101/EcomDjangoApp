@@ -1,0 +1,34 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/new_product.css'%}">
+
+
+<div class="container-fluid defna">
+	<nav class="container navbar navbar-expand-lg defna">
+	</nav>
+</div>
+
+<div class="rp">
+    <div class="content-section ml-4 mr-4 mt-4 mb-4">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form.title|as_crispy_field }}
+                    {{ form.content|as_crispy_field }}
+                    {{ form.price|as_crispy_field }}
+                    {{ form.shipping_price|as_crispy_field }}
+                    {{ form.shipping_time|as_crispy_field }}
+                    {{ form.stock|as_crispy_field }}
+                    {{ form.image1|as_crispy_field }}
+                    {{ form.image2|as_crispy_field }}
+                    {{ form.image3|as_crispy_field }}   
+                    
+                </fieldset>
+                <button class="btn btn-success" type="submit">Post Product</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

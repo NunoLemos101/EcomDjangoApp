@@ -1,0 +1,62 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/trying.css'%}">
+<link rel="stylesheet" href="{% static '/css/sss.css'%}">
+<link rel="stylesheet" href="{% static '/css/mt.css'%}">
+
+
+
+<div class="mt-5">
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+            
+              <article class="media content-section">
+                <a href="{% url 'product-detail' order.ordered_items.item.id %}"><img class="" src="{{ order.ordered_items.item.image1.url }}"></a>
+                <div class="media-body">
+                <div class="article-metadata">
+                    <p class="mb-1 ml-2"><a class="mr-2" href="{% url 'product-detail' order.ordered_items.item.id %}">{{ order.ordered_items.item.title }}</a> </p>
+                    <div align="right" class="mt25-"><small class="text-muted">{{ order.date_placed|date:"F j , Y , H:i" }}</small></div>
+                </div>
+                
+                <h6 style="text-align:right;"><a id="hello"  class="article-title" href="#">Quantity: {{ order.ordered_items.number }}</a></h6>
+                
+                </div>
+              </article>        
+            </div>
+            <div class="col-md-4">
+            <div class="content-section">
+                <h3>Our Sidebar</h3>
+                <p class='text-muted'>
+                <ul class="list-group">
+                    <p href="#" style="color:black" class="list-group-item list-group-item-light">Total price: <span style="color:#B12704"><strong>{{ order.price_paid }}€ </strong></span></p> 
+                </ul>
+                </p>
+            
+            </div>
+            </div>
+            
+        </div>
+        <h2>Delivery Address</h6>
+        <hr>
+        <span class="text-muted">Address line 1:</span><span> {{ order.address_line_1 }} </span>
+        {% if order.address_line_2 %} 
+            <hr>
+            <span class="text-muted">Address line 2:</span><span> {{ order.address_line_2 }} </span>
+        {% endif %}
+        <hr>
+        <span class="text-muted">Country:</span><span> {{ order.Country }} </span>
+        <hr>
+        <span class="text-muted">State:</span><span> {{ order.state }} </span>
+        <hr>
+        <span class="text-muted">City:</span><span> {{ order.city }} </span>
+        <hr>
+        <span class="text-muted">ZIP CODE:</span><span> {{ order.ZIP_code }} </span>
+        <hr class="bg-black">
+                <span class="text-success">Tracking Code:</span><a href="{{ order.tracking_number }}" id="tracking_code"> {{ order.tracking_number }} </a>
+        <hr class="bg-black">
+        </main>
+</div>
+
+{% endblock content%}

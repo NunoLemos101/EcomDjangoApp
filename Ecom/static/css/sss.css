@@ -1,0 +1,15 @@
+.lol {
+    background-color: #fdfdfe;
+    text-align: center;
+    color: rgb(74, 74, 252);
+    transition: 0.3s;
+    
+}
+
+.lol:hover {
+    border: 1px solid black;
+    text-align: center;
+    color:black;
+    background-color: #6ab85b;
+    text-decoration: none;
+}

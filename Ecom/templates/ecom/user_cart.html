@@ -1,0 +1,43 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/trying.css'%}">
+<link rel="stylesheet" href="{% static '/css/sss.css'%}">
+
+
+<div class="mt-5">
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+            {% for x in objects_added_to_cart %}
+              <article class="media content-section">
+                <a href="{% url 'product-detail' x.item.id %}"><img class="" src="{{ x.item.image1.url }}"></a>
+                <div class="media-body">
+                <div class="article-metadata">
+                    <p class="mb-1 ml-2"><a class="mr-2" href="{% url 'product-detail' x.item.id %}">{{ x.item.title }}</a> </p>
+                    <small class="text-muted">{{ post.date_posted|date:"F j , Y , H:i" }}</small>
+                </div>
+                <h3 style="text-align:right;"><a href="{% url 'delete-cart' x.id %}"class="btn btn-danger btn-sm mb-2 mr-3">Remove</a><a id="hello"  class="article-title" href="#">{{ x.item.price }}€</a></h3>
+                <h6 style="text-align:right;"><a id="hello"  class="article-title" href="#">Quantity: {{ x.number }}</a></h6>
+                {% if x.number > x.item.stock %}
+                    <p> There isn't enough items on stock, try ordering less Quantity</p>
+                {% endif %}
+                </div>
+              </article>        
+            {% endfor %}
+            </div>
+            <div class="col-md-4">
+            <div class="content-section">
+                <h3>Our Sidebar</h3>
+                <p class='text-muted'>
+                <ul class="list-group">
+                    <p href="#" style="color:black" class="list-group-item list-group-item-light">Total price: <span style="color:#B12704"><strong>{{ checkout_price }}€ </strong></span><font size="2"><span class="text-muted">+ {{ checkout_shipping_price }}€</span></font></p> 
+                    <a href="{% url 'proceed-payment' %}" class="list-group-item list-group-item-light lol"><b>Proceed to Payment</b></a>
+                </ul>
+                </p>
+            </div>
+            </div>
+        </div>
+        </main>
+</div>
+{% endblock content%}

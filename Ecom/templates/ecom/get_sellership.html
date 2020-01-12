@@ -1,0 +1,44 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static '/css/sellership.css'%}">
+    <title>Register</title>
+
+</head>
+<body>
+<div class="rg">
+    <div class="content-section mt-4 mb-4 ml-4 mr-4">
+        
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">Wanna Become a Seller?</legend>
+               
+            </fieldset>
+            <form action="{% url 'confirm-sellership' %}" method ="post">
+                {% csrf_token %}
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-secondary" type ="submit">See Rights and Terms</button>     
+                </div>
+            </form>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Wanna Go back to Homepage? <a class="ml-2" href="{% url 'home' %}">Go Home here</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+<script src="/static/js/form.js"></script>
+
+

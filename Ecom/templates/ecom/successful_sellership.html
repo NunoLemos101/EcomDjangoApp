@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static '/css/register.css'%}">
+    <title>Register</title>
+
+</head>
+<body>
+<div class="rg">
+    <div class="content-section mt-4 mb-4 ml-4 mr-4">
+        
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">You are now able to sell Products. Thanks For choosing</legend>
+            
+            </fieldset>
+            <div class="form-group">
+               
+                <a href="{% url 'home' %}"class="btn btn-info"><i class="fa fa-home fbig"></i> Home</a> <a href="{% url 'new-product' %}"><span class="btn btn-success">Create a new Product Right now!</span></a>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Thanks for choosing us! <a class="ml-2" href="{% url 'home' %}">Back to Homepage</a>
+            </small>
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>

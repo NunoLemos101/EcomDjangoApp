@@ -1,0 +1,50 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static '/css/home2.css'%}">
+    <link rel="stylesheet" href="{% static '/css/new_product.css'%}">   
+
+
+
+<title>Deposit</title>
+
+</head>
+
+<div class="container-fluid defna">
+	<nav class="container navbar navbar-expand-lg defna">
+	</nav>
+</div>
+
+
+
+<div class="rp">
+    <div class="content-section ml-4 mr-4 mt-4 mb-4">
+        <form method="POST" action="{% url 'successful-deposit'%}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">Deposit on Django Comercial</legend>
+               
+            </fieldset>
+                <fieldset class="form-group">
+                    {{ cd_form.CardNumber|as_crispy_field }}
+                    {{ cd_form.CVV|as_crispy_field }}
+                    {{ cd_form.Owner|as_crispy_field }}
+                    {{ cd_form.ValidationYear|as_crispy_field }}
+                    {{ cd_form.ValidationMonth|as_crispy_field }}
+                    {{ cd_form.WithdrawAmount|as_crispy_field }}
+                </fieldset>
+                <button class="btn btn-success" type="submit">Deposit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+{% endblock content %}

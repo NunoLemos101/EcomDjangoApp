@@ -1,0 +1,51 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static '/css/sellership.css'%}">
+    <title>Register</title>
+
+</head>
+<body>
+<div class="rg">
+    <div class="content-section mt-4 mb-4 ml-4 mr-4">
+        
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">Wanna Become a Seller?</legend>
+                <h5 class="text-muted mt-2">Rights and Terms:</h5>
+             
+                    <small class="text-muted"><i class="fa fa-caret-right"></i> You will Have access to Sell Products.</small><br>
+                    <small class="text-muted"><i class="fa fa-caret-right"></i> You will Have a 'Seller' page where you can see the views of your Post.</small><br>    
+                    <small class="text-muted"><i class="fa fa-caret-right"></i> You will be able to post 3 images per Product.</small><br>
+                
+                    <small class="text-muted"><i class="fa fa-caret-right"></i> You will be charged 10€ once you get the Django SellerShip.</small><br>
+                    <small class="text-muted"><i class="fa fa-caret-right"></i> You will only receive 98% of the total product value you are selling, We take 2%.</small>
+        
+            </fieldset>
+            <form action ="{% url 'sellership-advise' %}" method ="post">
+                {% csrf_token %}
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-success" type ="submit">Get Django SellerShip</button>
+                    <button class="btn btn-primary" type ="submit">10.00 <i class="fa fa-euro"></i></button>    
+                         
+                </div>
+            </form>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Wanna Go back to Homepage? <a class="ml-2" href="{% url 'home' %}">Go Home here</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

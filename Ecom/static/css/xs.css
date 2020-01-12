@@ -1,0 +1,24 @@
+.remxs {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.bac {
+    text-decoration-color: rgb(82, 133, 58)44;
+}
+
+.title-col {
+    color: black;
+}
+
+.title-col:hover {
+    color: rgb(53, 83, 148);
+    text-decoration: none;
+}
+
+.mxa {
+    margin-top: -100;
+}

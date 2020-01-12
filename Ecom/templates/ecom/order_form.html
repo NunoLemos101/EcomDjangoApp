@@ -1,0 +1,67 @@
+{% extends 'ecom/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static '/css/armashuski.css'%}">   
+    <link rel="stylesheet" href="{% static '/css/payment.css' %}">
+
+
+<title>Deposit</title>
+
+</head>
+
+<div class="container-fluid defna">
+	<nav class="container navbar navbar-expand-lg defna">
+	</nav>
+</div>
+<div class="rp">
+    <div class="content-section ml-4 mr-4 mt-4 mb-4">
+        
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">What's on your Cart</legend>
+               
+            </fieldset>
+                <fieldset class="form-group">
+                    {% for product in cart %}
+                      {% if product.item.shipping_price != 0 %}
+                        <a href="{% url 'product-detail' product.item.id %}">{{ product.item.title }}</a><font size="2"><span class="ml-2"> Quantity: {{ product.number }}</span></font><font size="3"><span class="text-muted"> - Shipping Price: {{ product.item.shipping_price }}€</span></font><div class="r margin-t"><span style="color:#B12704"><strong>{{ product.true_price }}€ </strong></span></div>
+                        <hr>
+                      {% else %}  
+                        <a href="{% url 'product-detail' product.item.id %}">{{ product.item.title }}</a><font size="2"><span class="ml-2"> Quantity: {{ product.number }}</span></font><font size="3"><span class="text-muted"> - Shipping Price: <span class="text-success"><strong>FREE</strong></span></span></font><div class="r margin-t"><span style="color:#B12704"><strong>{{ product.true_price }}€ </strong></span></div>
+                        <hr>                    
+                      {% endif %}
+                    {% endfor %}    
+                <p class="mb-1">Total : <div class="r margin-t2"><span style="color:#B12704"><strong>{{ total }}€</strong></span></div></p>
+                </fieldset>
+    </div>
+</div>
+<div class="rp">
+    <div class="content-section ml-4 mr-4 mt-4 mb-4">
+        <form method="POST" action="{% url 'successful-payment' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-0">Your Address</legend>
+               
+            </fieldset>
+                <fieldset class="form-group">
+                   {{ order_form.address_line_1|as_crispy_field }}
+                   {{ order_form.address_line_2|as_crispy_field }}
+                   {{ order_form.Country|as_crispy_field }}
+                   {{ order_form.city|as_crispy_field }}
+                   {{ order_form.state|as_crispy_field }}
+                   {{ order_form.ZIP_code|as_crispy_field }}
+                </fieldset>
+                <button class="btn btn-success" type="submit">Place Order</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+{% endblock content %}

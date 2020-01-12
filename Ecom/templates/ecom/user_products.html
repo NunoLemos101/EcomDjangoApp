@@ -1,0 +1,88 @@
+{% extends 'ecom/base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/cardhome.css'%}">
+<link rel="stylesheet" href="{% static '/css/xs.css'%}">
+<link rel="stylesheet" href="{% static '/css/mt.css'%}">
+
+
+
+<div style="background-color:rgb(82, 133, 58)" class="container-fluid">
+	<nav class="container navbar navbar-expand-lg">
+	</nav>
+</div>
+
+<div class="container pt-5 mt30-">
+	<article> 
+        <hr>
+        {% if orders_count == 0 %}
+            <a class="link-order mb-3" href="{% url 'seller-orders' %}">Orders</a>
+        {% else %}
+            <a class="link-order mb-3" href="{% url 'seller-orders' %}">Orders <li style="color:rgb(46, 143, 37)" class="fa fa-circle"></li></a>
+        {% endif %}
+        <hr>
+          <span class="link-order mb-3" href="{% url 'seller-orders' %}">Your seller money: {{ request.user.profile.seller_money }} €</span><p class="text-muted">The money you get from sales will be deposited here. you will be able to get the money for yourself once you provide a tracking number for each offer</p>
+        <hr>    
+    </article>
+
+
+
+<div class="container mt-5">
+	<div class="row">
+<ul id="myUL" class="row mr-3">
+{% for product in user_products %}
+  {% if product.seller == request.user %}
+      <liu class="col-md-3">
+        <ulx id="{{ product }}">
+          <div class="cardv2">
+            <a href="{% url 'product-detail' product.id %}"><img src="{{ product.image1.url }}" alt="Avatar" style="width:100%"></a>
+            {% if product.stock == 0 %}
+              <div style="background-color:red" class="containerv2">
+                <h4 id="{{ product }}title"><b>{{ product.title }}</b></h4> 
+                <p> {{ product.price }} €</p> 
+                <form method="POST" action="{% url 'delete-product' product.id %}">
+                  {% csrf_token %}
+                  <a href="{% url 'edit-product' product.id %}" class="btn btn-primary mt10- mb-2">Edit</a>
+                  <button type="submit" href="{% url 'delete-product' product.id %}" class="btn btn-danger mt10- mb-2">Delete</button>
+              </form>  
+              </div>
+            {% else %}
+              <div class="containerv2">
+                <h4 id="{{ product }}title"><b>{{ product.title }}</b></h4> 
+                <p> {{ product.price }} €</p> 
+                <form method="POST" action="{% url 'delete-product' product.id %}">
+                  {% csrf_token %}
+                  <a href="{% url 'edit-product' product.id %}" class="btn btn-primary mt10- mb-2">Edit</a>
+                  <button type="submit" href="{% url 'delete-product' product.id %}" class="btn btn-danger mt10- mb-2">Delete</button>
+              </form>  
+              </div>          
+            {% endif %}
+          </div>
+        </ulx>
+      </liu>
+  {% endif %}
+{% endfor %}		
+<ul>
+
+	</div>
+</div>
+
+<script type='text/javascript'>
+
+(function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }  
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
+
+</script>
+
+{% endblock content %}

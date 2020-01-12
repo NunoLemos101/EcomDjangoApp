@@ -1,0 +1,86 @@
+{% extends 'ecom/base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/cardhome.css'%}">
+<link rel="stylesheet" href="{% static '/css/xs.css'%}">
+
+<div style="background-color:rgb(82, 133, 58)" class="container-fluid">
+	<nav class="container navbar navbar-expand-lg">
+	</nav>
+</div>
+
+<div class="container pt-5">
+	<form method="POST" action="{% url 'search' %}">
+		{% csrf_token %}
+		<input class="form-control" style="background-color:white" name="search_text" type="text" placeholder="Search for Products..."></input>
+	</form>
+	<article> 
+		<input class="form-control" style="background-color:rgba(80, 80, 80, 0.267)" id="myInput" onkeyup="myFunction()" type="text" placeholder="Search with more details..."></input>
+	</article>
+
+
+
+<div class="container mt-5">
+	<div class="row">
+<ul id="myUL" class="row mr-3">
+{% for product in final_list %}
+	<liu class="col-md-3">
+		<ulx id="{{ product }}">
+			<div class="cardv2">
+				<a href="{% url 'product-detail' product.id %}"><img src="{{ product.image1.url }}" alt="Avatar" style="width:100%"></a>
+					<div class="containerv2">
+						<h4 id="{{ product }}title"><b>{{ product.title }}</b></h4> 
+						<p> {{ product.price }} €</p> 
+					</div>
+			</div>
+		</ulx>
+	</liu>
+{% endfor %}		
+<ul>
+
+	</div>
+</div>
+
+<script src="/static/js/SearchProductBar.js"></script>
+<script>
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('liu');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("h4")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+var all_products = document.getElementById('myUL');
+var products = all_products.getElementsByTagName('ulx');
+  
+for (z = 0 ; z < products.length ; z++) {
+    var pro  = products[z]
+    pro = pro.outerHTML
+    pro = pro.slice(9)
+    var cut_by = pro.indexOf('>')
+    pro = pro.slice(0 , cut_by - 1)
+    pro = pro + 'title'
+    pro_title = document.getElementById(pro)
+    text_needed = pro_title.innerHTML
+    if (text_needed.length >= 30) {
+      text_needed = text_needed.slice(0 , 30)
+      document.getElementById(pro).innerHTML = text_needed + '...'
+    } else {
+         continue
+    }
+  }
+</script>
+
+{% endblock content %}
